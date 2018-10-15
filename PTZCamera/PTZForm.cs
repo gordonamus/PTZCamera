@@ -30,6 +30,8 @@ namespace PTZ_Controller
 
         private void PTZForm_Load(object sender, EventArgs e)
         {
+
+
             this.KeyDown += new KeyEventHandler(PTZForm_KeyDown);
             this.KeyUp += new KeyEventHandler(PTZForm_KeyUp);
 
@@ -109,6 +111,72 @@ namespace PTZ_Controller
                     break;
                 default: return;    // ignore other keys
             }
+        }
+
+        private async void buttonGo_Click(object sender, EventArgs e)
+        {
+            string cmd = textBoxCmd.Text.Trim();
+            int ctrl;   // Set control type
+            int dinc = 15;  // 15 degree speed increments (120 deg/s max)
+            int steps;  // Number of frame steps
+            int deg;    // Degrees of rotation
+            int tinc;   // Time increment for PTZ
+
+            switch (cmd.Substring(0,2))
+            {
+                case "PL": case "pl": case "Pl": case "pL":
+                    ctrl = (int)PTZ_ControlType.PAN_LEFT;
+                    break;
+                case "PR": case "pr": case "Pr": case "pR":
+                    ctrl = (int)PTZ_ControlType.PAN_RIGHT;
+                    break;
+                case "TU": case "tu": case "Tu": case "tU":
+                    ctrl = (int)PTZ_ControlType.TILT_UP;
+                    break;
+                case "TD": case "td": case "Td": case "tD":
+                    ctrl = (int)PTZ_ControlType.TILT_DOWN;
+                    break;
+                case "ZI": case "zi": case "Zi": case "zI":
+                    ctrl = (int)PTZ_ControlType.ZOOM_IN;
+                    break;
+                case "ZO": case "zo": case "Zo": case "zO":
+                    ctrl = (int)PTZ_ControlType.ZOOM_OUT;
+                    break;
+                default:
+                    MessageBox.Show("Invalid Input");
+                    return;
+            }
+
+            // Check if input is zoom
+            if (cmd.Length == 2)
+            {
+                PTZControl(ctrl, false, 4); // Control Zoom with speed = 4
+                await Task.Delay(1000);
+                PTZControl(ctrl, true, 4);  // Stop
+            }
+            // Check if degree input is an integer and is below 360 degrees          
+            else if (int.TryParse(cmd.Substring(2, cmd.Length - 2), out deg))
+            {
+                if (deg <= 360)
+                {
+                    steps = deg / dinc;
+                    tinc = 1000 * steps;
+
+                    PTZControl(ctrl, false, 1); // Control PT with speed = 1 (15 deg/s)
+                    await Task.Delay(tinc);
+                    PTZControl(ctrl, true, 1);  // Stop
+                }
+                else
+                {
+                    MessageBox.Show("Invalid Input: Rotation > 360 degrees");
+                }
+                return;
+            }
+            else
+            {
+                MessageBox.Show("Invalid Input: Rotation not int");
+            }
+            return;
         }
     }
 }

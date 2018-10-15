@@ -16,7 +16,7 @@ namespace PTZ_Controller
     {
         // Construct camera login form and video feed form
         public LoginForm loginForm = new LoginForm();
-        public Form2 m_videoform = new Form2();
+        public VideoForm m_videoform = new VideoForm();
 
         // Construct (camera) info into struct and dictionary
         public DEV_INFO devInfo = new DEV_INFO();
@@ -71,7 +71,7 @@ namespace PTZ_Controller
             if (dictDiscontDev.Count > 0)
             {
                 timerDisconnect.Enabled = true; // Default value is true
-                timerDisconnect.Start();
+                // timerDisconnect.Start();
             }
         }
 
@@ -210,7 +210,7 @@ namespace PTZ_Controller
             if (0 == dictDiscontDev.Count)
             {
                 timerDisconnect.Enabled = false;
-                timerDisconnect.Stop();
+                // timerDisconnect.Stop();
             }
         }
     }

@@ -1,6 +1,6 @@
 ﻿namespace PTZ_Controller
 {
-    partial class Form2
+    partial class VideoForm
     {
         /// <summary>
         /// Required designer variable.

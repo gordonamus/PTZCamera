@@ -10,7 +10,7 @@ using System.Windows.Forms;
 
 namespace PTZ_Controller
 {
-    public partial class Form2 : UserControl
+    public partial class VideoForm : UserControl
     {
         int m_nIndex;   //index	
         // bool m_bRecord; //is recording or not
@@ -21,7 +21,7 @@ namespace PTZ_Controller
         public int m_iChannel; //play channel
         // public int m_iTalkhandle;
 
-        public Form2()
+        public VideoForm()
         {
             InitializeComponent();
         }
