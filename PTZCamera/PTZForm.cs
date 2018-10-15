@@ -21,17 +21,19 @@ namespace PTZ_Controller
 
         private void PTZControl(int nCommand, bool bStop, int nSpeed)
         {
+            LoginForm clientForm = (LoginForm)this.Owner;
+            DEV_INFO m_devinfo = clientForm.devInfo;
+            int nLoginID = m_devinfo.lLoginID;
             int nChannel = 1;
             NETSDK.H264_DVR_PTZControl(nLoginID, nChannel, (int)nCommand, bStop, nSpeed);
         }
 
-        // 
         private void PTZForm_Load(object sender, EventArgs e)
         {
             this.KeyDown += new KeyEventHandler(PTZForm_KeyDown);
             this.KeyUp += new KeyEventHandler(PTZForm_KeyUp);
 
-            // error possibility from simultaneous key presses
+            // Error possibility from simultaneous key presses
         }
 
         void PTZForm_KeyDown(object sender, KeyEventArgs e)
