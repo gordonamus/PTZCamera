@@ -112,13 +112,13 @@ namespace PTZ_Controller
                 default: return;    // ignore other keys
             }
         }
-
+        
         private async void buttonGo_Click(object sender, EventArgs e)
         {
             string cmd = textBoxCmd.Text.Trim();
             int ctrl;   // Set control type
             int dinc = 15;  // 15 degree speed increments (120 deg/s max)
-            int steps;  // Number of frame steps
+            double steps;  // Number of frame steps
             int deg;    // Degrees of rotation
             int tinc;   // Time increment for PTZ
 
@@ -160,7 +160,7 @@ namespace PTZ_Controller
                 if (deg <= 360)
                 {
                     steps = deg / dinc;
-                    tinc = 1000 * steps;
+                    tinc = Convert.ToInt32(1000 * steps);
 
                     PTZControl(ctrl, false, 1); // Control PT with speed = 1 (15 deg/s)
                     await Task.Delay(tinc);

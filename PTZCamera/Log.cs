@@ -15,7 +15,7 @@ namespace PTZ_Controller
     public partial class LoginForm : Form
     {
         // Construct camera login form and video feed form
-        public LoginForm loginForm = new LoginForm();
+        // public LoginForm loginForm = new LoginForm();
         public VideoForm m_videoform = new VideoForm();
 
         // Construct (camera) info into struct and dictionary
@@ -156,7 +156,7 @@ namespace PTZ_Controller
 
             ExitSDk();
 
-            loginForm.Close();
+            this.Close();
             //ptzForm.Close();
             m_videoform.VideoExit();
         }
