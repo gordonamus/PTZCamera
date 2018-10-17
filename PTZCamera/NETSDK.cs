@@ -830,7 +830,7 @@ namespace PTZ_Controller
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
 	    public SDK_NetDHCPConfig[] vNetDHCPConfig;
     };
-    class NETSDK
+    public class NETSDK
     {
         
         public delegate void fDisConnect(int lLoginID, string pchDVRIP, int nDVRPort, IntPtr dwUser);

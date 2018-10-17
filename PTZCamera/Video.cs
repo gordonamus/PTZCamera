@@ -8,7 +8,7 @@ using System.Windows.Forms;
 
 namespace PTZ_Controller
 {
-    public partial class VideoForm : UserControl
+    public partial class VideoForm : Form
     {
         int m_nIndex;   //index	
         // bool m_bRecord; //is recording or not
@@ -77,10 +77,9 @@ namespace PTZ_Controller
             return false;
         }
 
-        public void VideoExit()
+        /*public void VideoExit()
         {
-            
             ((Form)this.TopLevelControl).Close();
-        }
+        }*/
     }
 }

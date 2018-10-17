@@ -71,12 +71,13 @@ namespace PTZ_Controller
             if (dictDiscontDev.Count > 0)
             {
                 timerDisconnect.Enabled = true; // Default value is true
-                // timerDisconnect.Start();
+                timerDisconnect.Start();
             }
         }
 
         public int InitSDK()
         {
+            VideoForm m_videoform = new VideoForm();
             // Initialize
             disCallback = new NETSDK.fDisConnect(DisConnectBackCallFunc);
             GC.KeepAlive(disCallback);  // Keep the disconnect callback object alive
@@ -158,7 +159,8 @@ namespace PTZ_Controller
 
             this.Close();
             //ptzForm.Close();
-            m_videoform.VideoExit();
+            m_videoform.Close();
+            //m_videoform.VideoExit();
         }
 
         // Reconnect to camera
@@ -210,7 +212,7 @@ namespace PTZ_Controller
             if (0 == dictDiscontDev.Count)
             {
                 timerDisconnect.Enabled = false;
-                // timerDisconnect.Stop();
+                timerDisconnect.Stop();
             }
         }
     }
