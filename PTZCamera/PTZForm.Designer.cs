@@ -37,7 +37,7 @@
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(12, 30);
+            this.label1.Location = new System.Drawing.Point(28, 27);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(78, 13);
             this.label1.TabIndex = 0;
@@ -46,24 +46,24 @@
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(47, 121);
+            this.label2.Location = new System.Drawing.Point(49, 101);
             this.label2.Name = "label2";
-            this.label2.Size = new System.Drawing.Size(192, 91);
+            this.label2.Size = new System.Drawing.Size(152, 117);
             this.label2.TabIndex = 1;
             this.label2.Text = "INPUT FORMAT EXAMPLES:\r\n\"PL30\" == Pan left 30 degrees\r\n\"tu30\" == Tilt up 30 degre" +
-    "es\r\n\"Zo\" == Zoom out\r\n\r\nUse Arrow Keys to Pan or Tilt\r\nUse Number Keys/Pad to Zo" +
-    "om In/Out";
+    "es\r\n\"Zo\" == Zoom out\r\n\r\nUse Arrow Keys to Pan or Tilt\r\n\r\nUse 1-8 Number Keys/Pad" +
+    " to \r\n          inc/dec camera Speed\r\n";
             // 
             // textBoxCmd
             // 
-            this.textBoxCmd.Location = new System.Drawing.Point(96, 27);
+            this.textBoxCmd.Location = new System.Drawing.Point(112, 24);
             this.textBoxCmd.Name = "textBoxCmd";
             this.textBoxCmd.Size = new System.Drawing.Size(119, 20);
             this.textBoxCmd.TabIndex = 2;
             // 
             // buttonGo
             // 
-            this.buttonGo.Location = new System.Drawing.Point(134, 53);
+            this.buttonGo.Location = new System.Drawing.Point(92, 50);
             this.buttonGo.Name = "buttonGo";
             this.buttonGo.Size = new System.Drawing.Size(81, 33);
             this.buttonGo.TabIndex = 3;
@@ -75,7 +75,7 @@
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(274, 244);
+            this.ClientSize = new System.Drawing.Size(266, 244);
             this.Controls.Add(this.buttonGo);
             this.Controls.Add(this.textBoxCmd);
             this.Controls.Add(this.label2);
