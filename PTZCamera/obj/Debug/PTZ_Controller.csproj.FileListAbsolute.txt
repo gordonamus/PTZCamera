@@ -1,0 +1,6 @@
+C:\Users\Gordon\Documents\Mantaro\PTZCamera\PTZCamera\PTZCamera\obj\Debug\PTZ_Controller.LoginForm.resources
+C:\Users\Gordon\Documents\Mantaro\PTZCamera\PTZCamera\PTZCamera\obj\Debug\PTZ_Controller.VideoForm.resources
+C:\Users\Gordon\Documents\Mantaro\PTZCamera\PTZCamera\PTZCamera\obj\Debug\PTZCamera.Properties.Resources.resources
+C:\Users\Gordon\Documents\Mantaro\PTZCamera\PTZCamera\PTZCamera\obj\Debug\PTZ_Controller.PTZForm.resources
+C:\Users\Gordon\Documents\Mantaro\PTZCamera\PTZCamera\PTZCamera\obj\Debug\PTZ_Controller.csproj.GenerateResource.cache
+C:\Users\Gordon\Documents\Mantaro\PTZCamera\PTZCamera\PTZCamera\obj\Debug\PTZ_Controller.csproj.CoreCompileInputs.cache
