@@ -116,7 +116,7 @@ namespace PTZ_Controller
                 if (nLoginID > 0)
                 {
                     LoginForm loginForm = new LoginForm();
-                    PTZForm ptzForm = new PTZForm();
+                    PTZForm ptzForm = new PTZForm(this);
                     m_videoform.Show();
                     ptzForm.Show();
                     // this.Close();

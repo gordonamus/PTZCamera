@@ -13,19 +13,20 @@ namespace PTZ_Controller
     public partial class PTZForm : Form
     {
         public int speed = 4;
+        LoginForm clientForm;
 
-        public PTZForm()
+        public PTZForm(LoginForm loginForm)
         {
+            clientForm = loginForm;
             InitializeComponent();
         }
 
         private void PTZControl(int nCommand, bool bStop, int nSpeed)
         {
-            LoginForm clientForm = (LoginForm)this.Owner;
             DEV_INFO m_devinfo = clientForm.devInfo;
             int nLoginID = m_devinfo.lLoginID;
             int nChannel = 1;
-            NETSDK.H264_DVR_PTZControl(nLoginID, nChannel, (int)nCommand, bStop, nSpeed);
+            NETSDK.H264_DVR_PTZControl(nLoginID, nChannel, nCommand, bStop, nSpeed);
         }
 
         private void PTZForm_Load(object sender, EventArgs e)
