@@ -32,6 +32,7 @@
             this.label2 = new System.Windows.Forms.Label();
             this.textBoxCmd = new System.Windows.Forms.TextBox();
             this.buttonGo = new System.Windows.Forms.Button();
+            this.buttonSwitch = new System.Windows.Forms.Button();
             this.SuspendLayout();
             // 
             // label1
@@ -56,6 +57,7 @@
             // 
             // textBoxCmd
             // 
+            this.textBoxCmd.Enabled = false;
             this.textBoxCmd.Location = new System.Drawing.Point(112, 24);
             this.textBoxCmd.Name = "textBoxCmd";
             this.textBoxCmd.Size = new System.Drawing.Size(119, 20);
@@ -63,7 +65,7 @@
             // 
             // buttonGo
             // 
-            this.buttonGo.Location = new System.Drawing.Point(92, 50);
+            this.buttonGo.Location = new System.Drawing.Point(150, 50);
             this.buttonGo.Name = "buttonGo";
             this.buttonGo.Size = new System.Drawing.Size(81, 33);
             this.buttonGo.TabIndex = 3;
@@ -71,18 +73,28 @@
             this.buttonGo.UseVisualStyleBackColor = true;
             this.buttonGo.Click += new System.EventHandler(this.buttonGo_Click);
             // 
+            // buttonSwitch
+            // 
+            this.buttonSwitch.Location = new System.Drawing.Point(31, 52);
+            this.buttonSwitch.Name = "buttonSwitch";
+            this.buttonSwitch.Size = new System.Drawing.Size(102, 28);
+            this.buttonSwitch.TabIndex = 4;
+            this.buttonSwitch.Text = "Text On/Off";
+            this.buttonSwitch.UseVisualStyleBackColor = true;
+            this.buttonSwitch.Click += new System.EventHandler(this.buttonSwitch_Click);
+            // 
             // PTZForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(266, 244);
+            this.Controls.Add(this.buttonSwitch);
             this.Controls.Add(this.buttonGo);
             this.Controls.Add(this.textBoxCmd);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
             this.Name = "PTZForm";
             this.Text = "PTZForm";
-            this.Load += new System.EventHandler(this.PTZForm_Load);
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PTZForm_KeyDown);
             this.KeyUp += new System.Windows.Forms.KeyEventHandler(this.PTZForm_KeyUp);
             this.ResumeLayout(false);
@@ -96,5 +108,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.TextBox textBoxCmd;
         private System.Windows.Forms.Button buttonGo;
+        private System.Windows.Forms.Button buttonSwitch;
     }
 }

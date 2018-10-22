@@ -22,3 +22,15 @@ C:\Users\andre\Documents\GitHub\PTZCamera\PTZCamera\obj\x86\Debug\PTZ_Controller
 C:\Users\andre\Documents\GitHub\PTZCamera\PTZCamera\obj\x86\Debug\PTZ_Controller.csproj.CoreCompileInputs.cache
 C:\Users\andre\Documents\GitHub\PTZCamera\PTZCamera\obj\x86\Debug\PTZCamera.exe
 C:\Users\andre\Documents\GitHub\PTZCamera\PTZCamera\obj\x86\Debug\PTZCamera.pdb
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\bin\x86\Debug\PTZCamera.exe.config
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\bin\x86\Debug\PTZCamera.exe
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\bin\x86\Debug\PTZCamera.pdb
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\x86\Debug\PTZ_Controller.csprojAssemblyReference.cache
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\x86\Debug\PTZ_Controller.LoginForm.resources
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\x86\Debug\PTZ_Controller.VideoForm.resources
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\x86\Debug\PTZCamera.Properties.Resources.resources
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\x86\Debug\PTZ_Controller.PTZForm.resources
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\x86\Debug\PTZ_Controller.csproj.GenerateResource.cache
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\x86\Debug\PTZ_Controller.csproj.CoreCompileInputs.cache
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\x86\Debug\PTZCamera.exe
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\x86\Debug\PTZCamera.pdb

@@ -12,16 +12,17 @@ namespace PTZ_Controller
 {
     public partial class PTZForm : Form
     {
-        public int speed = 4;
+        public long speed = 4;
         LoginForm clientForm;
 
         public PTZForm(LoginForm loginForm)
         {
             clientForm = loginForm;
             InitializeComponent();
+            this.Select();  // Activate user control to the PTZ form
         }
 
-        private void PTZControl(int nCommand, bool bStop, int nSpeed)
+        private void PTZControl(int nCommand, bool bStop, long nSpeed)
         {
             DEV_INFO m_devinfo = clientForm.devInfo;
             int nLoginID = m_devinfo.lLoginID;
@@ -29,7 +30,7 @@ namespace PTZ_Controller
             NETSDK.H264_DVR_PTZControl(nLoginID, nChannel, nCommand, bStop, nSpeed);
         }
 
-        private void PTZForm_Load(object sender, EventArgs e)
+        /*private void PTZForm_Load(object sender, EventArgs e)
         {
 
 
@@ -37,7 +38,7 @@ namespace PTZ_Controller
             this.KeyUp += new KeyEventHandler(PTZForm_KeyUp);
 
             // Error possibility from simultaneous key presses
-        }
+        }*/
 
         void PTZForm_KeyDown(object sender, KeyEventArgs e)
         {
@@ -113,7 +114,7 @@ namespace PTZ_Controller
                 default: return;    // ignore other keys
             }
         }
-        
+
         private async void buttonGo_Click(object sender, EventArgs e)
         {
             string cmd = textBoxCmd.Text.Trim();
@@ -123,7 +124,7 @@ namespace PTZ_Controller
             int deg;    // Degrees of rotation
             int tinc;   // Time increment for PTZ
 
-            switch (cmd.Substring(0,2))
+            switch (cmd.Substring(0, 2))
             {
                 case "PL": case "pl": case "Pl": case "pL":
                     ctrl = (int)PTZ_ControlType.PAN_LEFT;
@@ -139,24 +140,29 @@ namespace PTZ_Controller
                     break;
                 case "ZI": case "zi": case "Zi": case "zI":
                     ctrl = (int)PTZ_ControlType.ZOOM_IN;
+                    if (cmd.Length == 2)
+                    {
+                        PTZControl(ctrl, false, 4); // Control Zoom with speed = 4
+                        await Task.Delay(1000);
+                        PTZControl(ctrl, true, 4);  // Stop
+                    }
                     break;
                 case "ZO": case "zo": case "Zo": case "zO":
                     ctrl = (int)PTZ_ControlType.ZOOM_OUT;
+                    if (cmd.Length == 2)
+                    {
+                        PTZControl(ctrl, false, 4); // Control Zoom with speed = 4
+                        await Task.Delay(1000);
+                        PTZControl(ctrl, true, 4);  // Stop
+                    }
                     break;
                 default:
                     MessageBox.Show("Invalid Input");
                     return;
-            }
+            } 
 
-            // Check if input is zoom
-            if (cmd.Length == 2)
-            {
-                PTZControl(ctrl, false, 4); // Control Zoom with speed = 4
-                await Task.Delay(1000);
-                PTZControl(ctrl, true, 4);  // Stop
-            }
             // Check if degree input is an integer and is below 360 degrees          
-            else if (int.TryParse(cmd.Substring(2, cmd.Length - 2), out deg))
+            if (int.TryParse(cmd.Substring(2, cmd.Length - 2), out deg))
             {
                 if (deg <= 360)
                 {
@@ -178,6 +184,11 @@ namespace PTZ_Controller
                 MessageBox.Show("Invalid Input: Rotation not int");
             }
             return;
+        }
+
+        private void buttonSwitch_Click(object sender, EventArgs e)
+        {
+            textBoxCmd.Enabled = !textBoxCmd.Enabled;
         }
     }
 }

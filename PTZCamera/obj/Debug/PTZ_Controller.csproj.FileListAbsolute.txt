@@ -4,3 +4,15 @@ C:\Users\Gordon\Documents\Mantaro\PTZCamera\PTZCamera\PTZCamera\obj\Debug\PTZCam
 C:\Users\Gordon\Documents\Mantaro\PTZCamera\PTZCamera\PTZCamera\obj\Debug\PTZ_Controller.PTZForm.resources
 C:\Users\Gordon\Documents\Mantaro\PTZCamera\PTZCamera\PTZCamera\obj\Debug\PTZ_Controller.csproj.GenerateResource.cache
 C:\Users\Gordon\Documents\Mantaro\PTZCamera\PTZCamera\PTZCamera\obj\Debug\PTZ_Controller.csproj.CoreCompileInputs.cache
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\bin\Debug\PTZCamera.exe.config
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\bin\Debug\PTZCamera.exe
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\bin\Debug\PTZCamera.pdb
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\Debug\PTZ_Controller.csprojAssemblyReference.cache
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\Debug\PTZ_Controller.LoginForm.resources
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\Debug\PTZ_Controller.VideoForm.resources
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\Debug\PTZCamera.Properties.Resources.resources
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\Debug\PTZ_Controller.PTZForm.resources
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\Debug\PTZ_Controller.csproj.GenerateResource.cache
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\Debug\PTZ_Controller.csproj.CoreCompileInputs.cache
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\Debug\PTZCamera.exe
+C:\Users\Gordon\Source\Repos\PTZCamera\PTZCamera\obj\Debug\PTZCamera.pdb
