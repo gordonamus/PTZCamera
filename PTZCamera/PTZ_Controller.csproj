@@ -8,7 +8,7 @@
     <OutputType>WinExe</OutputType>
     <RootNamespace>PTZCamera</RootNamespace>
     <AssemblyName>PTZCamera</AssemblyName>
-    <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
+    <TargetFrameworkVersion>v2.0</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <AutoGenerateBindingRedirects>true</AutoGenerateBindingRedirects>
     <Deterministic>true</Deterministic>
@@ -92,7 +92,7 @@
     <Compile Include="Video.Designer.cs">
       <DependentUpon>Video.cs</DependentUpon>
     </Compile>
-    <Compile Include="NETSDK.cs" />
+    <Compile Include="XMSDK.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="PTZForm.cs">

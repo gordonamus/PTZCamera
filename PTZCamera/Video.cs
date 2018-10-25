@@ -32,7 +32,7 @@ namespace PTZ_Controller
             playstru.nStream = 0;
             playstru.nMode = 0;
             playstru.hWnd = this.Handle;
-            m_iPlayhandle = NETSDK.H264_DVR_RealPlay(pDev.lLoginID, ref playstru);
+            m_iPlayhandle = XMSDK.H264_DVR_RealPlay(pDev.lLoginID, ref playstru);
 
             return m_iPlayhandle;
         }
@@ -46,7 +46,7 @@ namespace PTZ_Controller
         {
             if (m_iPlayhandle > 0)
             {
-                NETSDK.H264_DVR_StopRealPlay(m_iPlayhandle, (uint)this.Handle);
+                XMSDK.H264_DVR_StopRealPlay(m_iPlayhandle, (uint)this.Handle);
                 m_iPlayhandle = -1;
 
             }
@@ -59,7 +59,7 @@ namespace PTZ_Controller
 
         public bool OnOpenSound()
         {
-            if (NETSDK.H264_DVR_OpenSound(m_iPlayhandle))
+            if (XMSDK.H264_DVR_OpenSound(m_iPlayhandle))
             {
                 m_bSound = true;
                 return true;
@@ -69,7 +69,7 @@ namespace PTZ_Controller
 
         public bool OnCloseSound()
         {
-            if (NETSDK.H264_DVR_CloseSound(m_iPlayhandle))
+            if (XMSDK.H264_DVR_CloseSound(m_iPlayhandle))
             {
                 m_bSound = false;
                 return true;

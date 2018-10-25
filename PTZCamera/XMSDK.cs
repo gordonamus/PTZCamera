@@ -31,7 +31,7 @@ namespace PTZ_Controller
         H264_DVR_CLOSE_CHANNEL_ERROR = -11201,			//关闭通道失败
         H264_DVR_SUB_CONNECT_ERROR = -11202,			//建立媒体子连接失败
         H264_DVR_SUB_CONNECT_SEND_ERROR = -11203,			//媒体子连接通讯失败
-        // 用户管理部分错误码
+        /// 用户管理部分错误码
         H264_DVR_NOPOWER = -11300,			//无权限
         H264_DVR_PASSWORD_NOT_VALID = -11301,			// 账号密码不对
         H264_DVR_LOGIN_USER_NOEXIST = -11302,			//用户不存在
@@ -49,7 +49,7 @@ namespace PTZ_Controller
         H264_DVR_ACCOUNT_PWD_NOT_VALID = -11314,			//密码不正确
         H264_DVR_ACCOUNT_PWD_NOT_MATCH = -11315,			//密码不匹配
         H264_DVR_ACCOUNT_RESERVED = -11316,			//保留帐号
-        // 配置管理相关错误码
+        /// 配置管理相关错误码
 
         H264_DVR_OPT_RESTART = -11400,			// 保存配置后需要重启应用程序
         H264_DVR_OPT_REBOOT = -11401,			// 需要重启系统
@@ -57,7 +57,7 @@ namespace PTZ_Controller
         H264_DVR_OPT_CAPS_ERROR = -11403,			// 配置特性不支持
         H264_DVR_OPT_VALIDATE_ERROR = -11404,			// 配置校验失败
         H264_DVR_OPT_CONFIG_NOT_EXIST = -11405,			// 请求或者设置的配置不存在
-        // 
+        /// 
         H264_DVR_CTRL_PAUSE_ERROR = -11500,			//暂停失败
         H264_DVR_SDK_NOTFOUND = -11501,			//查找失败，没有找到对应文件
         H264_DVR_CFG_NOT_ENABLE = -11502,           //配置未启用
@@ -178,7 +178,7 @@ namespace PTZ_Controller
         E_SDK_CONFIG_CAR_INPUT_EXCHANGE,   //外部信息输入与车辆状态的对应关系
         E_SDK_CONFIG_DELAY_TIME,       //车载系统延时配置
         E_SDK_CONFIG_NET_ORDER,            //网络优先级
-        E_SDK_CONFIG_ABILITY_NETORDER, ///网络优先级设置能力
+        E_SDK_CONFIG_ABILITY_NETORDER, ////网络优先级设置能力
         E_SDK_CONFIG_CARPLATE,				//车牌号配置
     }
     public enum MEDIA_FILE_TYPE
@@ -203,21 +203,21 @@ namespace PTZ_Controller
     };
     public enum SDK_RSSI_SINGNAL
     {
-	    SDK_RSSI_NO_SIGNAL,   //= -90db
-	    SDK_RSSI_VERY_LOW,     //= -81db
-	    SDK_RSSI_LOW,          //= -71db
-	    SDK_RSSI_GOOD,         //= -67db
-	    SDK_RSSI_VERY_GOOD,    //= -57db
-	    SDK_RSSI_EXCELLENT     //>-57db
+        SDK_RSSI_NO_SIGNAL,   //<= -90db
+        SDK_RSSI_VERY_LOW,     //<= -81db
+        SDK_RSSI_LOW,          //<= -71db
+        SDK_RSSI_GOOD,         //<= -67db
+        SDK_RSSI_VERY_GOOD,    //<= -57db
+        SDK_RSSI_EXCELLENT     //>-57db
     };
     public enum SDK_DeviceType
     {
-        SDK_DEVICE_TYPE_DVR,	// 普通DVR设备
-        SDK_DEVICE_TYPE_NVS,	// NVS设备
-        SDK_DEVICE_TYPE_IPC,	// IPC设备
-        SDK_DEVICE_TYPE_HVR,	
-        SDK_DEVICE_TYPE_IVR,	
-        SDK_DEVICE_TYPE_MVR,	
+        SDK_DEVICE_TYPE_DVR,	///< 普通DVR设备
+        SDK_DEVICE_TYPE_NVS,	///< NVS设备
+        SDK_DEVICE_TYPE_IPC,	///< IPC设备
+        SDK_DEVICE_TYPE_HVR,	///<混合dvr
+        SDK_DEVICE_TYPE_IVR,	///<智能dvr
+        SDK_DEVICE_TYPE_MVR,	///<车载dvr
         SDK_DEVICE_TYPE_NR
     };
 
@@ -247,8 +247,8 @@ namespace PTZ_Controller
         IRIS_OPEN,				//光圈扩大
         IRIS_CLOSE,				//光圈缩小13
 
-        EXTPTZ_OPERATION_ALARM,			// 报警功能 
-        EXTPTZ_LAMP_ON,					// 灯光开
+        EXTPTZ_OPERATION_ALARM,			///< 报警功能 
+        EXTPTZ_LAMP_ON,					///< 灯光开
         EXTPTZ_LAMP_OFF,				//灯光关
         EXTPTZ_POINT_SET_CONTROL,			//设置预置点 
         EXTPTZ_POINT_DEL_CONTROL,			//清除预置点 
@@ -268,7 +268,7 @@ namespace PTZ_Controller
         EXTPTZ_AUXIOPEN,				//辅助开关，关闭在子命令中//param1 参见SDK_PtzAuxStatus，param2传入具体数值
         EXTPTZ_OPERATION_MENU,				//球机菜单操作，其中包括开，关，确定等等
         EXTPTZ_REVERSECOMM,				//镜头翻转
-        EXTPTZ_OPERATION_RESET,			// 云台复位
+        EXTPTZ_OPERATION_RESET,			///< 云台复位
 
         EXTPTZ_TOTAL,
     };
@@ -320,8 +320,8 @@ namespace PTZ_Controller
     public struct CHANNEL_INFO
     {
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 64)]
-	    string				szChnnelName;			// 通道名称.
-	    public int					nChnnID;							// 用于地图节点管理
+        string szChnnelName;            // 通道名称.
+        public int nChnnID;							// 用于地图节点管理
         public int nChannelNo;							// 通道号.
         public int bUserRight;							// 用户权限(使能).
         public int PreViewChannel;						// 预览通道
@@ -386,14 +386,14 @@ namespace PTZ_Controller
     }
     public struct SDK_SYSTEM_TIME
     {
-        public int year;// 年。   
-        public int month;// 月，January = 1, February = 2, and so on.   
-        public int day;// 日。   
-        public int wday;// 星期，Sunday = 0, Monday = 1, and so on   
-        public int hour;// 时。   
-        public int minute;// 分。   
-        public int second;// 秒。   
-        public int isdst;// 夏令时标识。   
+        public int year;///< 年。   
+        public int month;///< 月，January = 1, February = 2, and so on.   
+        public int day;///< 日。   
+        public int wday;///< 星期，Sunday = 0, Monday = 1, and so on   
+        public int hour;///< 时。   
+        public int minute;///< 分。   
+        public int second;///< 秒。   
+        public int isdst;///< 夏令时标识。   
     }
     public struct TransComChannel//透明窗口
     {
@@ -406,28 +406,28 @@ namespace PTZ_Controller
     public struct H264_DVR_DEVICEINFO
     {
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 64)]
-        public string sSoftWareVersion;	// 软件版本信息
+        public string sSoftWareVersion;	///< 软件版本信息
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 64)]
-        public string sHardWareVersion;	// 硬件版本信息
+        public string sHardWareVersion;	///< 硬件版本信息
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 64)]
-        public string sEncryptVersion;	// 加密版本信息
-        SDK_SYSTEM_TIME tmBuildTime;// 软件创建时间
+        public string sEncryptVersion;	///< 加密版本信息
+        SDK_SYSTEM_TIME tmBuildTime;///< 软件创建时间
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 64)]
-        public string sSerialNumber;			// 设备序列号
-        public int byChanNum;				// 视频输入通道数
-        public int iVideoOutChannel;		// 视频输出通道数
-        public int byAlarmInPortNum;		// 报警输入通道数
-        public int byAlarmOutPortNum;		// 报警输出通道数
-        public int iTalkInChannel;			// 对讲输入通道数
-        public int iTalkOutChannel;		// 对讲输出通道数
-        public int iExtraChannel;			// 扩展通道数	
-        public int iAudioInChannel;		// 音频输入通道数
-        public int iCombineSwitch;			// 组合编码通道分割模式是否支持切换
-        public int iDigChannel;		
-        public ushort uiDeviceRunTime;	
-        public SDK_DeviceType deviceTye;	
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 64)]                                   
-        public string sHardWare;		                               
+        public string sSerialNumber;			///< 设备序列号
+        public int byChanNum;				///< 视频输入通道数
+        public int iVideoOutChannel;		///< 视频输出通道数
+        public int byAlarmInPortNum;		///< 报警输入通道数
+        public int byAlarmOutPortNum;		///< 报警输出通道数
+        public int iTalkInChannel;			///< 对讲输入通道数
+        public int iTalkOutChannel;		///< 对讲输出通道数
+        public int iExtraChannel;			///< 扩展通道数	
+        public int iAudioInChannel;		///< 音频输入通道数
+        public int iCombineSwitch;			///< 组合编码通道分割模式是否支持切换
+        public int iDigChannel;		///<数字通道数
+        public ushort uiDeviceRunTime;	///<系统运行时间
+        public SDK_DeviceType deviceTye;	///设备类型
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 64)]                                    ///
+        public string sHardWare;		///<设备型号                                   ///
     }
     public struct H264_DVR_CLIENTINFO
     {
@@ -457,51 +457,52 @@ namespace PTZ_Controller
     //查询录像条件
     public struct H264_DVR_FINDINFO
     {
-	    public int nChannelN0;			//通道号
-	    public int nFileType;			//文件类型, 见SDK_File_Type
-	    public H264_DVR_TIME startTime;	//开始时间
-	    public H264_DVR_TIME endTime;	//结束时间
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]     	
-        public string szCard;		//卡号
-	    public uint hWnd;
+        public int nChannelN0;          //通道号
+        public int nFileType;           //文件类型, 见SDK_File_Type
+        public H264_DVR_TIME startTime; //开始时间
+        public H264_DVR_TIME endTime;	//结束时间
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
+        public string szCard;       //卡号
+        public uint hWnd;
     };
 
     //录像文件返回结构体
     [StructLayout(LayoutKind.Sequential)]
-    public struct H264_DVR_FILE_DATA 
-     {
+    public struct H264_DVR_FILE_DATA
+    {
         public int ch;						//通道号
         public int size;                    //文件大小
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 108)]     
-        public string sFileName;		// 文件名
-        public SDK_SYSTEM_TIME stBeginTime;	// 文件开始时间
-        public SDK_SYSTEM_TIME stEndTime;		// 文件结束时间
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 108)]
+        public string sFileName;		///< 文件名
+        public SDK_SYSTEM_TIME stBeginTime;	///< 文件开始时间
+        public SDK_SYSTEM_TIME stEndTime;		///< 文件结束时间
         public uint hWnd;
-     };
+    };
 
-    public struct H264_DVR_TIME {
-	    public int dwYear;		//年
-        public int dwMonth;	//月
-	    public int dwDay;		//日
-	    public int dwHour;		//时
-	    public int dwMinute;	//分
-	    public int dwSecond;	//秒
+    public struct H264_DVR_TIME
+    {
+        public int dwYear;		//年
+        public int dwMonth; //月
+        public int dwDay;       //日
+        public int dwHour;      //时
+        public int dwMinute;    //分
+        public int dwSecond;	//秒
     };
 
     public struct SDK_VIDEOCOLOR_PARAM
     {
-        public int nBrightness;		// 亮度	0-100
-        public int nContrast;			// 对比度	0-100
-        public int nSaturation;		// 饱和度	0-100
-        public int nHue;				// 色度	0-100
-        public int mGain;				// 增益	0-100 第７位置1表示自动增益		
-        public int mWhitebalance;		// 自动白电平控制，bit7置位表示开启自动控制.0x0,0x1,0x2分别代表低,中,高等级
-        public int nAcutance;          // 锐度   0-15
+        public int nBrightness;		///< 亮度	0-100
+        public int nContrast;			///< 对比度	0-100
+        public int nSaturation;		///< 饱和度	0-100
+        public int nHue;				///< 色度	0-100
+        public int mGain;				///< 增益	0-100 第７位置1表示自动增益		
+        public int mWhitebalance;		///< 自动白电平控制，bit7置位表示开启自动控制.0x0,0x1,0x2分别代表低,中,高等级
+        public int nAcutance;          ///< 锐度   0-15
     };
     public struct SDK_VIDEOCOLOR
     {
-        public SDK_TIMESECTION tsTimeSection;		// 时间段
-        public SDK_VIDEOCOLOR_PARAM dstColor;			// 颜色定义
+        public SDK_TIMESECTION tsTimeSection;		/// 时间段
+        public SDK_VIDEOCOLOR_PARAM dstColor;			/// 颜色定义
         public int iEnable;
     }
     public struct SDK_CONFIG_VIDEOCOLOR
@@ -519,255 +520,255 @@ namespace PTZ_Controller
         public string szSerialInfo;  //如果是按序列号，则为序列号，如果是用户名，则为用户名
     }
 
-    
+
     //摄象机参数.....
 
     //曝光配置
     public struct SDK_ExposureCfg
     {
-	    public int  level;    //曝光等级
-	    public uint leastTime;//自动曝光时间下限或手动曝光时间，单位微秒
-	    public uint mostTime; //自动曝光时间上限，单位微秒
+        public int level;    //曝光等级
+        public uint leastTime;//自动曝光时间下限或手动曝光时间，单位微秒
+        public uint mostTime; //自动曝光时间上限，单位微秒
     };
 
     //增益配置
     public struct SDK_GainCfg
     {
-	    public int gain;    //自动增益上限(自动增益启用)或固定增益值
-	    public int autoGain;//自动增益是否启用，0:不开启  1:开启
+        public int gain;    //自动增益上限(自动增益启用)或固定增益值
+        public int autoGain;//自动增益是否启用，0:不开启  1:开启
     };
 
     //网络摄像机配置
     public struct SDK_CameraParam
     {
-	    public uint whiteBalance;         //白平衡
-	    public uint dayNightColor;        //日夜模式，取值有彩色、自动切换和黑白
-	    public int elecLevel;             //参考电平值
-	    public uint apertureMode;          //自动光圈模式
-	    public uint BLCMode;               //背光补偿模式
-	    public SDK_ExposureCfg exposureConfig;//曝光配置
-	    public SDK_GainCfg     gainConfig;    //增益配置
+        public uint whiteBalance;         //白平衡
+        public uint dayNightColor;        //日夜模式，取值有彩色、自动切换和黑白
+        public int elecLevel;             //参考电平值
+        public uint apertureMode;          //自动光圈模式
+        public uint BLCMode;               //背光补偿模式
+        public SDK_ExposureCfg exposureConfig;//曝光配置
+        public SDK_GainCfg gainConfig;    //增益配置
 
-	    public uint PictureFlip;		//图片上下翻转
-	    public uint PictureMirror;	//图片左右翻转(镜像)
-	    public uint RejectFlicker;	//日光灯防闪功能
-	    public uint EsShutter;		//电子慢快门功能
+        public uint PictureFlip;        //图片上下翻转
+        public uint PictureMirror;  //图片左右翻转(镜像)
+        public uint RejectFlicker;  //日光灯防闪功能
+        public uint EsShutter;      //电子慢快门功能
 
-	    public int ircut_mode;		//IR-CUT切换 0 = 红外灯同步切换 1 = 自动切换
+        public int ircut_mode;      //IR-CUT切换 0 = 红外灯同步切换 1 = 自动切换
 
-	    public int dnc_thr;			//日夜转换阈值
-	    public int ae_sensitivity;	//ae灵敏度配置
-	    public int Day_nfLevel;		//noise filter 等级，0-5,0不滤波，1-5 值越大滤波效果越明显
-	    public int Night_nfLevel;
-	    public int Ircut_swap;		//ircut 正常序= 0        反序= 1
+        public int dnc_thr;         //日夜转换阈值
+        public int ae_sensitivity;  //ae灵敏度配置
+        public int Day_nfLevel;     //noise filter 等级，0-5,0不滤波，1-5 值越大滤波效果越明显
+        public int Night_nfLevel;
+        public int Ircut_swap;		//ircut 正常序= 0        反序= 1
     };
 
     //所有摄象机配置
     public struct SDK_AllCameraParam
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 16)]
-	    public SDK_CameraParam[] vCameraParamAll;   //所有的通道
+        public SDK_CameraParam[] vCameraParamAll;   //所有的通道
     };
-       
+
     public struct PACKET_INFO_EX
     {
-	    public int		nPacketType;				// 包类型,见MEDIA_PACK_TYPE
-	    public string	pPacketBuffer;				// 缓存区地址
-	    public uint	dwPacketSize;				// 包的大小
+        public int nPacketType;             // 包类型,见MEDIA_PACK_TYPE
+        public string pPacketBuffer;                // 缓存区地址
+        public uint dwPacketSize;               // 包的大小
 
-	    // 绝对时标
-	    public int		nYear;						// 时标:年		
-	    public int		nMonth;						// 时标:月
-	    public int		nDay;						// 时标:日
-	    public int		nHour;						// 时标:时
-	    public int		nMinute;					// 时标:分
-	    public int		nSecond;					// 时标:秒
-	    public uint 	dwTimeStamp;					// 相对时标低位，单位为毫秒
-	    public uint	dwTimeStampHigh;        //相对时标高位，单位为毫秒
-	    public uint   dwFrameNum;             //帧序号
-	    public uint   dwFrameRate;            //帧率
-	    public ushort uWidth;              //图像宽度
-	    public ushort uHeight;             //图像高度
+        // 绝对时标
+        public int nYear;                       // 时标:年		
+        public int nMonth;                      // 时标:月
+        public int nDay;                        // 时标:日
+        public int nHour;                       // 时标:时
+        public int nMinute;                 // 时标:分
+        public int nSecond;                 // 时标:秒
+        public uint dwTimeStamp;                    // 相对时标低位，单位为毫秒
+        public uint dwTimeStampHigh;        //相对时标高位，单位为毫秒
+        public uint dwFrameNum;             //帧序号
+        public uint dwFrameRate;            //帧率
+        public ushort uWidth;              //图像宽度
+        public ushort uHeight;             //图像高度
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 6)]
-	    public ushort[]       Reserved;            //保留
-    } ;
-    // 夏令时结构
+        public ushort[] Reserved;            //保留
+    };
+    ///< 夏令时结构
     public struct DSTPoint
     {
         public int iYear;
         public int iMonth;
-        public int iWeek;		//1:first  to2 3 4 -1:last one   0:表示使用按日计算的方法[-1,4]
-        public int iWeekDay;	//weekday from sunday=0	[0, 6]
+        public int iWeek;		///<周1:first  to2 3 4 -1:last one   0:表示使用按日计算的方法[-1,4]
+        public int iWeekDay;	///<weekday from sunday=0	[0, 6]
         public int Hour;
         public int Minute;
     };
     //普通配置页结构体
     public struct SDK_CONFIG_NORMAL
     {
-        public SDK_SYSTEM_TIME sysTime;		//系统时间
+        public SDK_SYSTEM_TIME sysTime;     //系统时间
 
-	    public int iLocalNo;			/*!< 本机编号:[0, 998] */
+        public int iLocalNo;			/*!< 本机编号:[0, 998] */
         public int iOverWrite;			/*!< 硬盘满时处理 "OverWrite", "StopRecord" */
-        public int iSnapInterval;			// 定时抓图的时间间隔以秒为单位 
+        public int iSnapInterval;			///< 定时抓图的时间间隔，以秒为单位 
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 64)]
-	    public string sMachineName;	// 机器名
+        public string sMachineName;	///< 机器名
         public int iVideoStartOutPut;	/*!< 输出模式 */
-        public int iAutoLogout;			// 本地菜单自动注销(分钟)	[0, 120]
+        public int iAutoLogout;			///< 本地菜单自动注销(分钟)	[0, 120]
 
         public int iVideoFormat;		/*!< 视频制式:“PAL”, “NTSC”, “SECAM” */
         public int iLanguage;			/*!< 语言选择:“English”, “SimpChinese”, “TradChinese”, “Italian”, “Spanish”, “Japanese”, “Russian”, “French”, “German” */
         public int iDateFormat;		/*!< 日期格式:“YYMMDD”, “MMDDYY”, “DDMMYY” */
         public int iDateSeparator;		/*!< 日期分割符:“.”, “-”, “/” */
         public int iTimeFormat;		/*!< 时间格式:“12”, “24” */
-        public int iDSTRule;			// 夏令时规则 
-        public int iWorkDay;			// 工作日
+        public int iDSTRule;			///< 夏令时规则 
+        public int iWorkDay;			///< 工作日
         public DSTPoint dDSTStart;
         public DSTPoint dDSTEnd;
     };
-        // 编码功能
+    /// 编码功能
     public enum SDK_EncodeFunctionTypes
     {
-	    SDK_ENCODE_FUNCTION_TYPE_DOUBLE_STREAM,		// 双码流功能
-	    SDK_ENCODE_FUNCTION_TYPE_COMBINE_STREAM,	// 组合编码功能
-	    SDK_ENCODE_FUNCTION_TYPE_SNAP_STREAM,		// 抓图功能
-	    SDK_ENCODE_FUNCTION_TYPE_WATER_MARK,		// 水印功能
+        SDK_ENCODE_FUNCTION_TYPE_DOUBLE_STREAM,		///< 双码流功能
+	    SDK_ENCODE_FUNCTION_TYPE_COMBINE_STREAM,	///< 组合编码功能
+	    SDK_ENCODE_FUNCTION_TYPE_SNAP_STREAM,		///< 抓图功能
+	    SDK_ENCODE_FUNCTION_TYPE_WATER_MARK,		///< 水印功能
 	    SDK_ENCODE_FUNCTION_TYPE_NR,
     };
     public enum SDK_AlarmFucntionTypes
     {
-	    SDK_ALARM_FUNCTION_TYPE_MOTION_DETECT,	// 动态检测
-	    SDK_ALARM_FUNCTION_TYPE_BLIND_DETECT,	// 视屏遮挡
-	    SDK_ALARM_FUNCTION_TYPE_LOSS_DETECT,	// 视屏丢失
-	    SDK_ALARM_FUNCTION_TYPE_LOCAL_ALARM,	// 本地报警
-	    SDK_ALARM_FUNCTION_TYPE_NET_ALARM,		// 网络报警
-	    SDK_ALARM_FUNCTION_TYPE_IP_CONFLICT,	// IP地址冲突
-	    SDK_ALARM_FUNCTION_TYPE_NET_ABORT,		// 网络异常
-	    SDK_ALARM_FUNCTION_TYPE_STORAGE_NOTEXIST,	// 存储设备不存在
-	    SDK_ALARM_FUNCTION_TYPE_STORAGE_LOWSPACE,	// 存储设备容量不足
-	    SDK_ALARM_FUNCTION_TYPE_STORAGE_FAILURE,	// 存储设备访问失败
-	    SDK_ALARM_FUNCTION_TYPE_VIDEOANALYSE, //视频分析
-	    SDK_ALARM_FUNCTION_TYPE_NET_ABORT_EXTEND,	//网络异常扩展
-	    SDK_ALARM_FUNCTION_TYPE_NR
+        SDK_ALARM_FUNCTION_TYPE_MOTION_DETECT,	///< 动态检测
+	    SDK_ALARM_FUNCTION_TYPE_BLIND_DETECT,	///< 视屏遮挡
+	    SDK_ALARM_FUNCTION_TYPE_LOSS_DETECT,	///< 视屏丢失
+	    SDK_ALARM_FUNCTION_TYPE_LOCAL_ALARM,	///< 本地报警
+	    SDK_ALARM_FUNCTION_TYPE_NET_ALARM,		///< 网络报警
+	    SDK_ALARM_FUNCTION_TYPE_IP_CONFLICT,	///< IP地址冲突
+	    SDK_ALARM_FUNCTION_TYPE_NET_ABORT,		///< 网络异常
+	    SDK_ALARM_FUNCTION_TYPE_STORAGE_NOTEXIST,	///< 存储设备不存在
+	    SDK_ALARM_FUNCTION_TYPE_STORAGE_LOWSPACE,	///< 存储设备容量不足
+	    SDK_ALARM_FUNCTION_TYPE_STORAGE_FAILURE,	///< 存储设备访问失败
+	    SDK_ALARM_FUNCTION_TYPE_VIDEOANALYSE,///<视频分析
+	    SDK_ALARM_FUNCTION_TYPE_NET_ABORT_EXTEND,   //网络异常扩展
+        SDK_ALARM_FUNCTION_TYPE_NR
     };
-        // 网络服务功能
+    /// 网络服务功能
     public enum SDK_NetServerTypes
     {
-	    SDK_NET_SERVER_TYPES_IPFILTER,		// 白黑名单
-	    SDK_NET_SERVER_TYPES_DHCP,			// DHCP功能
-	    SDK_NET_SERVER_TYPES_DDNS,			// DDNS功能
-	    SDK_NET_SERVER_TYPES_EMAIL,			// Email功能
-	    SDK_NET_SERVER_TYPES_MULTICAST,		// 多播功能
-	    SDK_NET_SERVER_TYPES_NTP,			// NTP功能
+        SDK_NET_SERVER_TYPES_IPFILTER,		///< 白黑名单
+	    SDK_NET_SERVER_TYPES_DHCP,			///< DHCP功能
+	    SDK_NET_SERVER_TYPES_DDNS,			///< DDNS功能
+	    SDK_NET_SERVER_TYPES_EMAIL,			///< Email功能
+	    SDK_NET_SERVER_TYPES_MULTICAST,		///< 多播功能
+	    SDK_NET_SERVER_TYPES_NTP,			///< NTP功能
 	    SDK_NET_SERVER_TYPES_PPPOE,
-	    SDK_NET_SERVER_TYPES_DNS,
-	    SDK_NET_SERVER_TYPES_ARSP,			// 主动注册服务
-	    SDK_NET_SERVER_TYPES_3G,            // 3G拨号
-	    SDK_NET_SERVER_TYPES_MOBILE=10,        // 手机监控
-	    SDK_NET_SERVER_TYPES_UPNP,			    // UPNP
-	    SDK_NET_SERVER_TYPES_FTP,			    // FTP
-	    SDK_NET_SERVER_TYPES_WIFI,          //WIFI
-	    SDK_NET_SERVER_TYPES_ALARM_CENTER,  // 告警中心
-	    SDK_NET_SERVER_TYPES_NETPLAT_MEGA,  // 互信互通
-	    SDK_NET_SERVER_TYPES_NETPLAT_XINWANG,  // 星望
-	    SDK_NET_SERVER_TYPES_NETPLAT_SHISOU,  // 视搜
-	    SDK_NET_SERVER_TYPES_NETPLAT_VVEYE,  // 威威眼
+        SDK_NET_SERVER_TYPES_DNS,
+        SDK_NET_SERVER_TYPES_ARSP,			///< 主动注册服务
+	    SDK_NET_SERVER_TYPES_3G,            ///< 3G拨号
+	    SDK_NET_SERVER_TYPES_MOBILE = 10,        ///< 手机监控
+	    SDK_NET_SERVER_TYPES_UPNP,			    ///< UPNP
+	    SDK_NET_SERVER_TYPES_FTP,			    ///< FTP
+	    SDK_NET_SERVER_TYPES_WIFI,          ///<WIFI
+	    SDK_NET_SERVER_TYPES_ALARM_CENTER,  ///< 告警中心
+	    SDK_NET_SERVER_TYPES_NETPLAT_MEGA,  ///< 互信互通
+	    SDK_NET_SERVER_TYPES_NETPLAT_XINWANG,  ///< 星望
+	    SDK_NET_SERVER_TYPES_NETPLAT_SHISOU,  ///< 视搜
+	    SDK_NET_SERVER_TYPES_NETPLAT_VVEYE,  ///< 威威眼
 	    SDK_NET_SERVER_TYPES_RTSP,     //RTSP
-	    SDK_NET_SERVER_TYPES_PHONEMSG=20,     //手机信息发送配置
-	    SDK_NET_SERVER_TYPES_PHONEMULTIMEDIAMSG,     //手机信息发送配置
-	    SDK_NET_SERVER_TYPES_DAS,          //主动注册
-	    SDK_NET_SERVER_TYPES_LOCALSDK_PLATFORM,          //网络平台信息设置
-	    SDK_NET_SERVER_TYPES_GOD_EYE, //神眼接警中心系统
-	    SDK_NET_SERVER_TYPES_NAT,		//NAT穿透，MTU配置
-	    SDK_NET_SERVER_TYPES_VPN,     //VPN
-	    SDK_NET_SERVER_TYPES_NET_KEYBOARD,	//网络键盘配置
-	    SDK_NET_SERVER_TYPES_SPVMN,		//28181协议配置
+        SDK_NET_SERVER_TYPES_PHONEMSG = 20,     //手机信息发送配置
+        SDK_NET_SERVER_TYPES_PHONEMULTIMEDIAMSG,     //手机信息发送配置
+        SDK_NET_SERVER_TYPES_DAS,          //主动注册
+        SDK_NET_SERVER_TYPES_LOCALSDK_PLATFORM,          //网络平台信息设置
+        SDK_NET_SERVER_TYPES_GOD_EYE,///<神眼接警中心系统
+	    SDK_NET_SERVER_TYPES_NAT,		///NAT穿透，MTU配置
+	    SDK_NET_SERVER_TYPES_VPN,     ///VPN
+	    SDK_NET_SERVER_TYPES_NET_KEYBOARD,	///网络键盘配置
+	    SDK_NET_SERVER_TYPES_SPVMN,		///28181协议配置
 	    SDK_NET_SERVER_TYPES_PMS,      //手机服务
-	    SDK_NET_SERVER_TYPE_KAICONG,		//凯聪配置
-	    SDK_NET_SERVER_TYPE_PROTOCOL_MAC,//支持MAC协议
+        SDK_NET_SERVER_TYPE_KAICONG,		///凯聪配置
+	    SDK_NET_SERVER_TYPE_PROTOCOL_MAC,///支持MAC协议
 	    SDK_NET_SERVER_TYPE_XMHEARTBEAT, //雄迈心跳
-	    SDK_NET_SERVER_TYPES_MONITOR_PLATFORM, //神州数码监控平台
-	    SDK_NET_SERVER_TYPES_ANJUP2P,			//
-	    SDK_NET_SERVER_TYPES_NR,   
+        SDK_NET_SERVER_TYPES_MONITOR_PLATFORM, //神州数码监控平台
+        SDK_NET_SERVER_TYPES_ANJUP2P,           //
+        SDK_NET_SERVER_TYPES_NR,
     };
-    //串口类型
+    ///串口类型
     public enum SDK_CommTypes
     {
-	    SDK_COMM_TYPES_RS485,			//485串口
-	    SDK_COMM_TYPES_RS232,			//232串口
+        SDK_COMM_TYPES_RS485,			///<485串口
+	    SDK_COMM_TYPES_RS232,			///<232串口
 	    SDK_COMM_TYPES_NR
     };
     //输入法限制
     public enum SDK_InPutMethod
     {
-	    SDK_NO_SUPPORT_CHINESE,		//不支持中文输入
-	    SDK_NO_SUPPORT_NR
+        SDK_NO_SUPPORT_CHINESE,     //不支持中文输入
+        SDK_NO_SUPPORT_NR
     };
     //报警中标签显示
     public enum SDK_TipShow
     {
-	    SDK_NO_BEEP_TIP_SHOW,  //蜂鸣提示
-	    SDK_NO_FTP_TIP_SHOW,  //FTP提示
-	    SDK_NO_EMAIL_TIP_SHOW,  //EMAIL提示
-	    SDK_NO_TIP_SHOW_NR
+        SDK_NO_BEEP_TIP_SHOW,  //蜂鸣提示
+        SDK_NO_FTP_TIP_SHOW,  //FTP提示
+        SDK_NO_EMAIL_TIP_SHOW,  //EMAIL提示
+        SDK_NO_TIP_SHOW_NR
     };
-    // 预览功能
+    /// 预览功能
     public enum SDK_PreviewTypes
     {
-	    SDK_PREVIEW_TYPES_TOUR,		// 轮巡
-	    SDK_PREVIEW_TYPES_TALK,		// GUI界面配置
+        SDK_PREVIEW_TYPES_TOUR,		///< 轮巡
+	    SDK_PREVIEW_TYPES_TALK,		///< GUI界面配置
 	    SDK_PREVIEW_TYPES_NR
     };
 
-    //车载功能
+    ///车载功能
     public enum SDK_MobileCar
     {
-	    SDK_MOBILEDVR_STATUS_EXCHANGE,
-	    SDK_MOBILEDVR_DELAY_SET,
-	    SDK_MOBILEDVR_CARPLATE_SET,
-	    SDK_MOBILEDVR_GPS_TIMING,
-	    SDK_MOBILEDVR_NR
+        SDK_MOBILEDVR_STATUS_EXCHANGE,
+        SDK_MOBILEDVR_DELAY_SET,
+        SDK_MOBILEDVR_CARPLATE_SET,
+        SDK_MOBILEDVR_GPS_TIMING,
+        SDK_MOBILEDVR_NR
     };
-    //其他功能
+    ///其他功能
     public enum SDK_OtherFunction
     {
-	    SDK_OTHER_DOWNLOADPAUSE,		//录像下载暂停功能
-	    SDK_OTHER_USB_SUPPORT_RECORD,	//USB支持录像功能
-	    SDK_OTHER_SD_SUPPORT_RECORD,		//SD支持录像功能
-	    SDK_OTHER_ONVIF_CLIENT_SUPPORT,	//是否支持ONVIF客户端
-	    SDK_OTHER_NET_LOCALSEARCH_SUPPORT,	//是否支持远程搜索
-	    SDK_OTHER_MAXPLAYBACK_SUPPORT, //是否支持最大回放通道数显示
-	    SDK_OTHER_NVR_SUPPORT, //是否是专业NVR
-	    SDK_OTHER_C7_PLATFORM_SUPPORT,//支持C7平台
-	    SDK_OTHER_MAIL_TEST_SUPPORT,		//支持邮件测试
-	    SDK_OTHER_SHOW_OSD_INFO,            //支持显示3行OSD信息
-	    SDK_OTHER_HIDE_DIGITAL, //通道模式屏蔽功能	
-	    SDK_OTHER_ACUTANCE_HORIZONTAL,	//锐度
-	    SDK_OTHER_ACUTANCE_VERTIAL,
-	    SDK_OTHER_BROAD_TRENDS,		//宽动态功能
-	    SDK_OTHER_NO_TALK,		//对讲能力
-	    SDK_OTHER_ALTER_DIGITAL_NAME,	//修改数字通道名称
-	    SDK_OTHER_SHOW_CONNECT_STATUS,      //支持显示wifi 3G 主动注册等的连接状态
-	    SDK_OTHER_SUPPORT_ECACT_SEEK,	//支持回放精准定位
-	    SDK_OTHER_UPLOAD_TITLEANDSTATE,		//通道标题和数字通道状态上传能力集
-	    SDK_OTHER_NO_HDD_RECORD,		//无硬盘录像
-	    SDK_OTHER_NR
+        SDK_OTHER_DOWNLOADPAUSE,        //录像下载暂停功能
+        SDK_OTHER_USB_SUPPORT_RECORD,   //USB支持录像功能
+        SDK_OTHER_SD_SUPPORT_RECORD,        //SD支持录像功能
+        SDK_OTHER_ONVIF_CLIENT_SUPPORT, //是否支持ONVIF客户端
+        SDK_OTHER_NET_LOCALSEARCH_SUPPORT,  //是否支持远程搜索
+        SDK_OTHER_MAXPLAYBACK_SUPPORT, //是否支持最大回放通道数显示
+        SDK_OTHER_NVR_SUPPORT, //是否是专业NVR
+        SDK_OTHER_C7_PLATFORM_SUPPORT,//支持C7平台
+        SDK_OTHER_MAIL_TEST_SUPPORT,        //支持邮件测试
+        SDK_OTHER_SHOW_OSD_INFO,            //支持显示3行OSD信息
+        SDK_OTHER_HIDE_DIGITAL, //通道模式屏蔽功能	
+        SDK_OTHER_ACUTANCE_HORIZONTAL,  //锐度
+        SDK_OTHER_ACUTANCE_VERTIAL,
+        SDK_OTHER_BROAD_TRENDS,     //宽动态功能
+        SDK_OTHER_NO_TALK,      //对讲能力
+        SDK_OTHER_ALTER_DIGITAL_NAME,   //修改数字通道名称
+        SDK_OTHER_SHOW_CONNECT_STATUS,      //支持显示wifi 3G 主动注册等的连接状态
+        SDK_OTHER_SUPPORT_ECACT_SEEK,   //支持回放精准定位
+        SDK_OTHER_UPLOAD_TITLEANDSTATE,     //通道标题和数字通道状态上传能力集
+        SDK_OTHER_NO_HDD_RECORD,        //无硬盘录像
+        SDK_OTHER_NR
     };
-    //支持的系统功能
+    ///支持的系统功能
     [StructLayout(LayoutKind.Sequential)]
     public struct SDK_SystemFunction
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)SDK_EncodeFunctionTypes.SDK_ENCODE_FUNCTION_TYPE_NR)]
-        public byte[] vEncodeFunction;	// 编码功能SDK_EncodeFunctionTypes
+        public byte[] vEncodeFunction;	///< 编码功能SDK_EncodeFunctionTypes
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)SDK_AlarmFucntionTypes.SDK_ALARM_FUNCTION_TYPE_NR)]
-        public byte[] vAlarmFunction;		// 报警功能AlarmFucntionTypes
+        public byte[] vAlarmFunction;		///< 报警功能AlarmFucntionTypes
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)SDK_NetServerTypes.SDK_NET_SERVER_TYPES_NR)]
-        public byte[] vNetServerFunction;	// 网络服务功能NetServerTypes
+        public byte[] vNetServerFunction;	///< 网络服务功能NetServerTypes
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)SDK_PreviewTypes.SDK_PREVIEW_TYPES_NR)]
-        public byte[] vPreviewFunction;		// 预览功能PreviewTypes
+        public byte[] vPreviewFunction;		///< 预览功能PreviewTypes
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)SDK_CommTypes.SDK_COMM_TYPES_NR)]
-        public byte[] vCommFunction;			//串口类型SDK_CommTypes
+        public byte[] vCommFunction;			///<串口类型SDK_CommTypes
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)SDK_InPutMethod.SDK_NO_SUPPORT_NR)]
-        public byte[] vInputMethodFunction;  //输入法限制SDK_InPutMethod>
+        public byte[] vInputMethodFunction;  //<输入法限制SDK_InPutMethod>
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)SDK_TipShow.SDK_NO_TIP_SHOW_NR)]
         public byte[] vTipShowFunction;               //报警标签显示SDK_TipShow>
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = (int)SDK_MobileCar.SDK_MOBILEDVR_NR)]
@@ -779,60 +780,60 @@ namespace PTZ_Controller
     public struct SDK_NetWifiDevice
     {
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 36)]
-	    public string sSSID;            //SSID Number
-	    public int nRSSI;                 //SEE SDK_RSSI_SINGNAL
-	    public int nChannel;
+        public string sSSID;            //SSID Number
+        public int nRSSI;                 //SEE SDK_RSSI_SINGNAL
+        public int nChannel;
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
-	    public string sNetType;         //Infra, Adhoc
+        public string sNetType;         //Infra, Adhoc
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
-	    public string sEncrypType;      //NONE, WEP, TKIP, AES
+        public string sEncrypType;      //NONE, WEP, TKIP, AES
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
-	    public string sAuth;            //OPEN, SHARED, WEPAUTO, WPAPSK, WPA2PSK, WPANONE, WPA, WPA2
+        public string sAuth;            //OPEN, SHARED, WEPAUTO, WPAPSK, WPA2PSK, WPANONE, WPA, WPA2
     };
-   
+
     public struct SDK_NetWifiDeviceAll
     {
-	    public int nDevNumber;
-        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]  //NET_MAX_AP_NUMBER=32
+        public int nDevNumber;
+        [MarshalAs(UnmanagedType.ByValArray, SizeConst = 32)]  ///NET_MAX_AP_NUMBER=32
 	    public SDK_NetWifiDevice[] vNetWifiDeviceAll;
     };
-    
-    // WIFI设置
+
+    ///< WIFI设置
     public struct SDK_NetWifiConfig
     {
-	    public byte bEnable;
+        public byte bEnable;
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 36)]
-	    public string sSSID;            //SSID Number
-	    public int nChannel;                   //channel
+        public string sSSID;            //SSID Number
+        public int nChannel;                   //channel
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
-	    public string sNetType;         //Infra, Adhoc
+        public string sNetType;         //Infra, Adhoc
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
-	    public string sEncrypType;      //NONE, WEP, TKIP, AES
+        public string sEncrypType;      //NONE, WEP, TKIP, AES
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
-	    public string sAuth;            //OPEN, SHARED, WEPAUTO, WPAPSK, WPA2PSK, WPANONE, WPA, WPA2
-	    public int  nKeyType;                  //0:Hex 1:ASCII
-        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)] //NET_IW_ENCODING_TOKEN_MAX = 128
+        public string sAuth;            //OPEN, SHARED, WEPAUTO, WPAPSK, WPA2PSK, WPANONE, WPA, WPA2
+        public int nKeyType;                  //0:Hex 1:ASCII
+        [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 128)] ///NET_IW_ENCODING_TOKEN_MAX = 128
 	    public string sKeys;
-	    public CONFIG_IPAddress HostIP;		// host ip
-	    public CONFIG_IPAddress Submask;		// netmask
-	    public CONFIG_IPAddress Gateway;		// gateway
+        public CONFIG_IPAddress HostIP;		///< host ip
+	    public CONFIG_IPAddress Submask;		///< netmask
+	    public CONFIG_IPAddress Gateway;		///< gateway
     };
 
     public struct SDK_NetDHCPConfig
     {
-	    public byte bEnable;
+        public byte bEnable;
         [MarshalAs(UnmanagedType.ByValTStr, SizeConst = 32)]
-	    public string ifName;
+        public string ifName;
     };
-    // 所有网卡的DHCP配置
+    /// 所有网卡的DHCP配置
     public struct SDK_NetDHCPConfigAll
     {
         [MarshalAs(UnmanagedType.ByValArray, SizeConst = 4)]
-	    public SDK_NetDHCPConfig[] vNetDHCPConfig;
+        public SDK_NetDHCPConfig[] vNetDHCPConfig;
     };
-    public class NETSDK
+    class XMSDK
     {
-        
+
         public delegate void fDisConnect(int lLoginID, string pchDVRIP, int nDVRPort, IntPtr dwUser);
         public delegate bool fMessCallBack(int lLoginID, string pBuf, uint dwBufLen, IntPtr dwUser);
         public delegate void fTransComCallBack(int lLoginID, int lTransComType, StringBuilder pBuffer, uint dwBufSize, uint dwUser);
@@ -840,8 +841,8 @@ namespace PTZ_Controller
         public delegate void fPlayDrawCallBack(int lPlayHand, IntPtr hDc, uint nUser);
         public delegate void fLocalPlayFileCallBack(uint lPlayHand, uint nUser);
         public delegate void InfoFramCallBack(int lPlayHand, uint nType, string pBuf, uint nSize, uint nUser);
-        public delegate int fRealDataCallBack_V2(int lRealHandle,ref PACKET_INFO_EX pFrame, int dwUser);
-        public delegate int fRealDataCallBack(int lRealHandle, int dwDataType, string strBuf,int lbufsize,int dwUser);
+        public delegate int fRealDataCallBack_V2(int lRealHandle, ref PACKET_INFO_EX pFrame, int dwUser);
+        public delegate int fRealDataCallBack(int lRealHandle, int dwDataType, string strBuf, int lbufsize, int dwUser);
 
         [DllImport("NetSdk.dll")]
         public static extern void H264_DVR_SetDVRMessCallBack(fMessCallBack cbAlarmcallback, IntPtr lUser);
@@ -902,7 +903,7 @@ namespace PTZ_Controller
 
         [DllImport("NetSdk.dll")]
         public static extern int H264_DVR_RealPlay(int lLoginID, ref H264_DVR_CLIENTINFO lpClientInfo);
-  
+
         [DllImport("NetSdk.dll")]
         public static extern Int32 H264_DVR_Login(StringBuilder sDVRIP, ushort wDVRPort, StringBuilder sUserName, StringBuilder sPassword,
                               out H264_DVR_DEVICEINFO lpDeviceInfo, out short error, SocketStyle socketstyle);
@@ -931,10 +932,10 @@ namespace PTZ_Controller
 
         [DllImport("NetSdk.dll")]
         public static extern int H264_DVR_SetupAlarmChan(int lLoginID);
-         
+
         // 播放本地文件
         [DllImport("NetSdk.dll")]
-        public static extern int H264_DVR_StartLocalPlay(string pFileName, IntPtr hWnd, fPlayDrawCallBack drawCallBack,uint user);
+        public static extern int H264_DVR_StartLocalPlay(string pFileName, IntPtr hWnd, fPlayDrawCallBack drawCallBack, uint user);
 
         //关闭本地文件
         [DllImport("NetSdk.dll")]
@@ -942,7 +943,7 @@ namespace PTZ_Controller
 
         //获取播放位置用于回放，和本地播放
         [DllImport("NetSdk.dll")]
-        public static extern float  H264_DVR_GetPlayPos(int lPlayHandle);
+        public static extern float H264_DVR_GetPlayPos(int lPlayHandle);
         //设置播放位置（百分比）用于回放，和本地播放
         [DllImport("NetSdk.dll")]
         public static extern bool H264_DVR_SetPlayPos(int lPlayHandle, float fRelativPos);
@@ -966,35 +967,32 @@ namespace PTZ_Controller
         [DllImport("NetSdk.dll")]
         public static extern int H264_DVR_FindFile(int lLoginID, ref H264_DVR_FINDINFO lpFindInfo, IntPtr ptr, int lMaxCount, out int findcount, int waittime);
         [DllImport("NetSdk.dll")]
-        public static extern int H264_DVR_GetFileByName(int lLoginID, ref H264_DVR_FILE_DATA sPlayBackFile,string sSavedFileName, 
-											fDownLoadPosCallBack cbDownLoadPos , int dwDataUser  );
+        public static extern int H264_DVR_GetFileByName(int lLoginID, ref H264_DVR_FILE_DATA sPlayBackFile, string sSavedFileName,
+                                            fDownLoadPosCallBack cbDownLoadPos, int dwDataUser);
         [DllImport("NetSdk.dll")]
         public static extern int H264_DVR_GetFileByTime(int lLoginID, ref H264_DVR_FINDINFO lpFindInfo, string sSavedFileDIR, bool bMerge,
-											fDownLoadPosCallBack cbDownLoadPos , int dwDataUser );
+                                            fDownLoadPosCallBack cbDownLoadPos, int dwDataUser);
         [DllImport("NetSdk.dll")]
-         public static extern int H264_DVR_PlayBackByName_V2(int lLoginID,ref H264_DVR_FILE_DATA sPlayBackFile, fDownLoadPosCallBack cbDownLoadPos, fRealDataCallBack_V2 fDownLoadDataCallBack, int dwDataUser);
+        public static extern int H264_DVR_PlayBackByName_V2(int lLoginID, ref H264_DVR_FILE_DATA sPlayBackFile, fDownLoadPosCallBack cbDownLoadPos, fRealDataCallBack_V2 fDownLoadDataCallBack, int dwDataUser);
         [DllImport("NetSdk.dll")]
-        public static extern int H264_DVR_PlayBackByTimeEx(int lLoginID, ref H264_DVR_FINDINFO lpFindInfo,fRealDataCallBack fDownLoadDataCallBack, int dwDataUser,
-											fDownLoadPosCallBack cbDownLoadPos, int dwPosUser);
+        public static extern int H264_DVR_PlayBackByTimeEx(int lLoginID, ref H264_DVR_FINDINFO lpFindInfo, fRealDataCallBack fDownLoadDataCallBack, int dwDataUser,
+                                            fDownLoadPosCallBack cbDownLoadPos, int dwPosUser);
         [DllImport("NetSdk.dll")]
-        public static extern bool H264_DVR_PlayBackControl(int lPlayHandle, int lControlCode,int lCtrlValue);
+        public static extern bool H264_DVR_PlayBackControl(int lPlayHandle, int lControlCode, int lCtrlValue);
         [DllImport("NetSdk.dll")]
         public static extern bool H264_DVR_StopGetFile(int lFileHandle);
-           
+
         [DllImport("NetSdk.dll")]
         public static extern bool H264_DVR_StopPlayBack(int lPlayHandle);
         [DllImport("NetSdk.dll")]
         public static extern int H264_DVR_GetDownloadPos(int lFileHandle);
 
-         [DllImport("NetSdk.dll")]
+        [DllImport("NetSdk.dll")]
         //抓本地图片 //预览，回放，本地播放 一个函数
         public static extern bool H264_DVR_LocalCatchPic(int lHandle, string strPath);
 
         [DllImport("NetSdk.dll")]
-        public static extern bool H264_DVR_PTZControl(int lLoginID,int nChannelNo, int lPTZCommand, bool bStop, long lSpeed);
-
-        [DllImport("NetSdk.dll")]
-        public static extern bool H264_DVR_PTZControlEx(long lLoginID,int nChannelNo, long lPTZCommand, long lParam1, long lParam2, long lParam3, bool bStop = false);
+        public static extern bool H264_DVR_PTZControl(int lLoginID, int nChannelNo, int lPTZCommand, bool bStop, long lSpeed);
 
     }
 

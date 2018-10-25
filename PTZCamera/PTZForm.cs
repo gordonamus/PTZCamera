@@ -3,31 +3,33 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
+//using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using System.Windows.Forms;
 
 namespace PTZ_Controller
 {
     public partial class PTZForm : Form
     {
-        public long speed = 4;
+        public int speed = 4;
         LoginForm clientForm;
+        public int nLoginID;
 
-        public PTZForm(LoginForm loginForm)
+        public PTZForm(LoginForm loginForm, int log)
         {
             clientForm = loginForm;
             InitializeComponent();
+            nLoginID = log;
             this.Select();  // Activate user control to the PTZ form
         }
 
-        private void PTZControl(int nCommand, bool bStop, long nSpeed)
+        private void PTZControl(int nCommand, bool bStop, int nSpeed)
         {
-            DEV_INFO m_devinfo = clientForm.devInfo;
-            int nLoginID = m_devinfo.lLoginID;
-            int nChannel = 1;
-            NETSDK.H264_DVR_PTZControl(nLoginID, nChannel, nCommand, bStop, nSpeed);
+            //DEV_INFO m_devinfo = clientForm.devInfo;
+            //int nLoginID = m_devinfo.lLoginID;
+            int nChannel = 0;
+            XMSDK.H264_DVR_PTZControl(nLoginID, nChannel, (int)nCommand, bStop, nSpeed);
         }
 
         /*private void PTZForm_Load(object sender, EventArgs e)
@@ -94,16 +96,16 @@ namespace PTZ_Controller
             switch (e.KeyCode)
             {
                 // handle up/down/right/left STOP
-                case Keys.Up:
+                case Keys.Down:
                     PTZControl((int)PTZ_ControlType.TILT_UP, true, speed);
                     break;
-                case Keys.Down:
+                case Keys.Up:
                     PTZControl((int)PTZ_ControlType.TILT_DOWN, true, speed);
                     break;
-                case Keys.Right:
+                case Keys.Left:
                     PTZControl((int)PTZ_ControlType.PAN_RIGHT, true, speed);
                     break;
-                case Keys.Left:
+                case Keys.Right:
                     PTZControl((int)PTZ_ControlType.PAN_LEFT, true, speed);
                     break;
                 case Keys.Z:    // zoom IN STOP
@@ -116,7 +118,7 @@ namespace PTZ_Controller
             }
         }
 
-        private async void buttonGo_Click(object sender, EventArgs e)
+        private void buttonGo_Click(object sender, EventArgs e)
         {
             if (textBoxCmd.Text.Trim() != "" && textBoxCmd.Text.Trim().Length > 1)
             {
@@ -130,24 +132,26 @@ namespace PTZ_Controller
                 switch (cmd.Substring(0, 2))
                 {
                     case "PL": case "pl": case "Pl": case "pL":
-                        ctrl = (int)PTZ_ControlType.PAN_LEFT;
-                        break;
-                    case "PR": case "pr": case "Pr": case "pR":
                         ctrl = (int)PTZ_ControlType.PAN_RIGHT;
                         break;
+                    case "PR": case "pr": case "Pr": case "pR":
+                        ctrl = (int)PTZ_ControlType.PAN_LEFT;
+                        break;
                     case "TU": case "tu": case "Tu": case "tU":
-                        ctrl = (int)PTZ_ControlType.TILT_UP;
+                        ctrl = (int)PTZ_ControlType.TILT_DOWN;
                         break;
                     case "TD": case "td": case "Td": case "tD":
-                        ctrl = (int)PTZ_ControlType.TILT_DOWN;
+                        ctrl = (int)PTZ_ControlType.TILT_UP;
                         break;
                     case "ZI": case "zi": case "Zi": case "zI":
                         ctrl = (int)PTZ_ControlType.ZOOM_IN;
                         if (cmd.Length == 2)
                         {
                             PTZControl(ctrl, false, 4); // Control Zoom with speed = 4
-                            await Task.Delay(1000);
+                           // await Task.Delay(1000);
+                            System.Threading.Thread.Sleep(1000);
                             PTZControl(ctrl, true, 4);  // Stop
+                            return;
                         }
                         break;
                     case "ZO": case "zo": case "Zo": case "zO":
@@ -155,8 +159,10 @@ namespace PTZ_Controller
                         if (cmd.Length == 2)
                         {
                             PTZControl(ctrl, false, 4); // Control Zoom with speed = 4
-                            await Task.Delay(1000);
+                            //await Task.Delay(1000);
+                            System.Threading.Thread.Sleep(1000);
                             PTZControl(ctrl, true, 4);  // Stop
+                            return;
                         }
                         break;
                     default:
@@ -170,11 +176,21 @@ namespace PTZ_Controller
                     if (deg <= 360)
                     {
                         steps = deg / dinc;
-                        tinc = Convert.ToInt32(1000 * steps);
 
-                        PTZControl(ctrl, false, 1); // Control PT with speed = 1 (15 deg/s)
-                        await Task.Delay(tinc);
-                        PTZControl(ctrl, true, 1);  // Stop
+                        if (ctrl == (int)PTZ_ControlType.TILT_UP || ctrl == (int)PTZ_ControlType.TILT_DOWN)
+                        {
+                            tinc = Convert.ToInt32(1950 * steps);
+                        }
+                        else
+                        {
+                            tinc = Convert.ToInt32(1143 * steps);
+                        }
+
+                        // tinc = Convert.ToInt32(1000 * steps);
+                        PTZControl(ctrl, false, 2); // Control PT with speed = 1 (15 deg/s)
+                        //await Task.Delay(tinc);
+                        System.Threading.Thread.Sleep(tinc);
+                        PTZControl(ctrl, true, 2);  // Stop
                     }
                     else
                     {

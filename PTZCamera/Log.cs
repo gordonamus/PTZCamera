@@ -3,9 +3,9 @@ using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
 using System.Drawing;
-using System.Linq;
+//using System.Linq;
 using System.Text;
-using System.Threading.Tasks;
+//using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.Runtime.InteropServices;
 using System.Threading;
@@ -29,8 +29,8 @@ namespace PTZ_Controller
         private System.Timers.ElapsedEventHandler reconnect;    // Time elapsed event to reconnect to camera
 
         // Instantiate Disconnect and Message Callback functions
-        private NETSDK.fDisConnect disCallback;
-        private NETSDK.fMessCallBack msgcallback;
+        private XMSDK.fDisConnect disCallback;
+        private XMSDK.fMessCallBack msgcallback;
 
         public LoginForm()
         {
@@ -45,7 +45,7 @@ namespace PTZ_Controller
         bool MessCallBack(int lLoginID, string pBuf, uint dwBufLen, IntPtr dwUser)
         {
             LoginForm form = new LoginForm();   // Construct new Login Form
-            Marshal.PtrToStructure(dwUser, form);   // Marshal unmanaged user data into struct data type
+            //Marshal.PtrToStructure(dwUser, form);   // Marshal unmanaged user data into struct data type
             return form.DealwithAlarm(lLoginID, pBuf, dwBufLen);    // Return True for callback
         }
 
@@ -61,7 +61,7 @@ namespace PTZ_Controller
             {
                 if (devinfo.lLoginID == lLoginID)
                 {
-                    NETSDK.H264_DVR_Logout(lLoginID);
+                    XMSDK.H264_DVR_Logout(lLoginID);
                     dictDevInfo.Remove(devinfo.lLoginID);
                     dictDiscontDev.Add(devinfo.lLoginID, devinfo);
                     break;
@@ -80,21 +80,21 @@ namespace PTZ_Controller
         {
             VideoForm m_videoform = new VideoForm();
             // Initialize
-            disCallback = new NETSDK.fDisConnect(DisConnectBackCallFunc);
+            disCallback = new XMSDK.fDisConnect(DisConnectBackCallFunc);
             GC.KeepAlive(disCallback);  // Keep the disconnect callback object alive
-            int bResult = NETSDK.H264_DVR_Init(disCallback, this.Handle);
+            int bResult = XMSDK.H264_DVR_Init(disCallback, this.Handle);
 
             // The messages received in SDK from DVR, which need to upload such as alarm information diary information, may go through callback function
-            msgcallback = new NETSDK.fMessCallBack(MessCallBack);
-            NETSDK.H264_DVR_SetDVRMessCallBack(msgcallback, this.Handle);
-            NETSDK.H264_DVR_SetConnectTime(5000, 3);
+            msgcallback = new XMSDK.fMessCallBack(MessCallBack);
+            XMSDK.H264_DVR_SetDVRMessCallBack(msgcallback, this.Handle);
+            XMSDK.H264_DVR_SetConnectTime(5000, 3);
 
             return bResult;
         }
 
         public bool ExitSDk()
         {
-            return NETSDK.H264_DVR_Cleanup();
+            return XMSDK.H264_DVR_Cleanup();
         }
 
         public bool DealwithAlarm(int lDevcID, string pBuf, uint dwLen)
@@ -112,12 +112,12 @@ namespace PTZ_Controller
             {
                 H264_DVR_DEVICEINFO dvrdevInfo = new H264_DVR_DEVICEINFO();
                 int nError;
-                int nLoginID = NETSDK.H264_DVR_Login(textBoxIP.Text.Trim(), ushort.Parse(textBoxport.Text.Trim()), textBoxUsername.Text, textBoxPassword.Text, out dvrdevInfo, out nError, SocketStyle.TCPSOCKET);
+                int nLoginID = XMSDK.H264_DVR_Login(textBoxIP.Text.Trim(), ushort.Parse(textBoxport.Text.Trim()), textBoxUsername.Text, textBoxPassword.Text, out dvrdevInfo, out nError, SocketStyle.TCPSOCKET);
 
                 if (nLoginID > 0)
                 {
                     LoginForm loginForm = new LoginForm();
-                    PTZForm ptzForm = new PTZForm(this);
+                    PTZForm ptzForm = new PTZForm(this, nLoginID);
                     m_videoform.Show();
                     ptzForm.Show();
                     // this.Close();
@@ -131,7 +131,7 @@ namespace PTZ_Controller
                     devInfo.szPsw = textBoxPassword.Text;
                     devInfo.NetDeviceInfo = dvrdevInfo;
                     dictDevInfo.Add(devInfo.lLoginID, devInfo);
-                    NETSDK.H264_DVR_SetupAlarmChan(nLoginID);
+                    XMSDK.H264_DVR_SetupAlarmChan(nLoginID);
                     m_videoform.ConnectRealPlay(ref devInfo, 0);
                 }
                 else
@@ -150,7 +150,7 @@ namespace PTZ_Controller
             foreach (DEV_INFO devinfo in dictDevInfo.Values)
             {
 
-                NETSDK.H264_DVR_Logout(devinfo.lLoginID);
+                XMSDK.H264_DVR_Logout(devinfo.lLoginID);
 
             }
 
@@ -159,7 +159,7 @@ namespace PTZ_Controller
             ExitSDk();
 
             this.Close();
-            ptzForm.Close();
+            //ptzForm.Close();
             m_videoform.Close();
             //m_videoform.VideoExit();
         }
@@ -175,13 +175,13 @@ namespace PTZ_Controller
                 int nError = 0; // DVR out parameter 
 
                 // Login to camera
-                int lLogin = NETSDK.H264_DVR_Login(devinfo.szIpaddress, (ushort)devinfo.nPort, devinfo.szUserName, devinfo.szPsw, out OutDev, out nError, SocketStyle.TCPSOCKET);
+                int lLogin = XMSDK.H264_DVR_Login(devinfo.szIpaddress, (ushort)devinfo.nPort, devinfo.szUserName, devinfo.szPsw, out OutDev, out nError, SocketStyle.TCPSOCKET);
 
                 // If login info is invalid
                 if (lLogin <= 0)
                 {
                     // Error messages
-                    int nErr = NETSDK.H264_DVR_GetLastError();
+                    int nErr = XMSDK.H264_DVR_GetLastError();
                     if (nErr == (int)SDK_RET_CODE.H264_DVR_PASSWORD_NOT_VALID)
                     {
                         MessageBox.Show("Password Error");
@@ -202,11 +202,11 @@ namespace PTZ_Controller
                 devAdd.lLoginID = lLogin;
 
                 // Connect to video feed
-                loginForm.m_videoform.ConnectRealPlay(ref devAdd, 1);
+                loginForm.m_videoform.ConnectRealPlay(ref devAdd, 0);
                 Thread.Sleep(10);
 
                 dictDevInfo.Add(lLogin, devAdd);    // Add connected device to dictionary
-                NETSDK.H264_DVR_SetupAlarmChan(lLogin); // Subscribe to alarm message
+                XMSDK.H264_DVR_SetupAlarmChan(lLogin); // Subscribe to alarm message
             }
 
             // If there is no record of any disconnected devices, cease the reconnect attempt

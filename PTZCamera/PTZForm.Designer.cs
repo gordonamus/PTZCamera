@@ -93,6 +93,7 @@
             this.Controls.Add(this.textBoxCmd);
             this.Controls.Add(this.label2);
             this.Controls.Add(this.label1);
+            this.KeyPreview = true;
             this.Name = "PTZForm";
             this.Text = "PTZForm";
             this.KeyDown += new System.Windows.Forms.KeyEventHandler(this.PTZForm_KeyDown);
