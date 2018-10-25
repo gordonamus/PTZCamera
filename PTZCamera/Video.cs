@@ -10,7 +10,7 @@ namespace PTZ_Controller
 {
     public partial class VideoForm : Form
     {
-        int m_nIndex;   //index	
+        // int m_nIndex;   //index	
         // bool m_bRecord; //is recording or not
         bool m_bSound;  //sound is off/on
 
